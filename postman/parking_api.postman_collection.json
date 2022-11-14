@@ -1,0 +1,166 @@
+{
+	"info": {
+		"_postman_id": "631e0a34-a1c9-4cfe-bd1f-179a1082e455",
+		"name": "Parking API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1165202"
+	},
+	"item": [
+		{
+			"name": "Register Access",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"licenseNumber\": \"KEO4436\"\r\n}\r\n \r\n// Brazil: KEO4436, ABC1D23 (Mercosul)\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/parking",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"parking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register Payment",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "teste",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "teste",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/parking/ABC1D23/pay",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"parking",
+						"ABC1D23",
+						"pay"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register Exit",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "teste",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "teste",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/parking/ABC1D23/out",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"parking",
+						"ABC1D23",
+						"out"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find Parkings",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "teste",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "teste",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/xml",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/v1/parking/ABC1D23",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"parking",
+						"ABC1D23"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
