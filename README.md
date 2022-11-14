@@ -19,18 +19,18 @@ The following items should be installed in your system:
 - Clone the Git repository or download the zip.
 
 ```
-git clone https://github.com/
+git clone https://github.com/leandro-freires/parking.git
 ```
 - IntelliJ
   - File -> Open...
   - Navigate to the folder
-  - Select the pom.xml
+  - Select the [pom.xml](https://github.com/leandro-freires/parking/blob/master/pom.xml)
   - Click on the `Open` button.
   - You can either build them on the command line `./mvnw generate-resources` or right click on the `parking` project then `Maven -> Generates sources and Update Folders`.
 - Eclipse
   - File -> Import -> Maven -> Existing Maven Project
   - Navigate to the folder
-  - Select the pom.xml
+  - Select the [pom.xml](https://github.com/leandro-freires/parking/blob/master/pom.xml)
   - Then either build on the command line `./mvnw generate-resources` or using the Eclipse launcher (right click on project and `Run As -> Maven install`)
 
 ### ⚙️Run Application
@@ -74,7 +74,7 @@ Or you can run it from Maven directly using the Spring Boot Maven plugin. If you
 * `PUT /v1/parking/{licenseNumber}/out` - it replaces current information of the exit.
 * `GET /v1/parking` - find all parking informations by license number.
 
-[Download Postman Collection]()
+[Download Postman Collection](https://github.com/leandro-freires/parking/blob/master/postman/parking_api.postman_collection.json)
 
 ### ✒️ Autor
 
