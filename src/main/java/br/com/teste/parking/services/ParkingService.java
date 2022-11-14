@@ -3,10 +3,12 @@ package br.com.teste.parking.services;
 import br.com.teste.parking.core.utils.StringUtil;
 import br.com.teste.parking.models.Parking;
 import br.com.teste.parking.models.Ticket;
+import br.com.teste.parking.models.dtos.ParkingDto;
 import br.com.teste.parking.models.dtos.ParkingReportDto;
 import br.com.teste.parking.models.dtos.VehicleDto;
 import br.com.teste.parking.core.exceptions.BusinessException;
 import br.com.teste.parking.repositories.ParkingRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -27,15 +29,18 @@ public class ParkingService {
         this.repository = repository;
     }
 
-    public Parking registerAccess(VehicleDto vehicleDto) {
+    public ParkingDto registerAccess(VehicleDto vehicleDto) {
         if (this.checkIfVehicleHasAlreadyEntered(vehicleDto.getLicenseNumber()))
             throw new BusinessException("msg.BusinessException.Parking.VehicleHasAlreadyEnteredOrHaveDebits.message");
+        ParkingDto parkingDto = new ParkingDto();
         Parking parking = new Parking();
         parking.setTicket(new Ticket());
         parking.setLicenseNumber(vehicleDto.getLicenseNumber());
         parking.setEntryTime(LocalDateTime.now());
         parking.getTicket().setTicketNumber(StringUtil.generateRandomNumber());
-        return this.save(parking);
+        this.save(parking);
+        BeanUtils.copyProperties(parking.getTicket(), parkingDto);
+        return parkingDto;
     }
 
     private boolean checkIfVehicleHasAlreadyEntered(String licenseNumber) {
